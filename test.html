@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Hello World</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
 <script>
 if (navigator.serviceWorker) {
     navigator.serviceWorker
@@ -12,9 +13,19 @@ if (navigator.serviceWorker) {
     console.log('servcie worker 注册失败')
     })
 }
+function go() {
+    $.get(document.forms["get"]["url"], function (data) {
+        document.getElementById("output").innerHTML = data;
+    });
+}
 </script>
 </head>
 <body>
 <h1>Hello World!</h1>
+<p id="output"></p>
+<form name="get">
+    <input type="text" name="url">
+    <button type="button" onclick="go()">Submit</button>
+</form>
 </body>
 </html>
