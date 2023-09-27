@@ -8,9 +8,18 @@ self.addEventListener('install', e => {
         })
     ) */
 })
-// 拦截所有请求事件
-// 如果缓存中已经有请求的数据就直接用缓存，否则去请求数据
-self.addEventListener('fetch', e => {
-    console.log('fetch source' + e.request);
-    e.respondWith(fetch(e.request));
-})
+//监听浏览器的所有fetch请求，对已经缓存的资源使用本地缓存回复
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request)
+            .then(function(response) {
+                console.log('Fetching resource: ' + event.request.url);
+                //该fetch请求已经缓存
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+                }
+            )
+    );
+});
