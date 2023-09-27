@@ -18,7 +18,7 @@ self.addEventListener('fetch', function(event) {
                 if (response) {
                     return response;
                 }
-                event.request.url='https://lht.cn.eu.org/http/' + event.request.url
+                // event.request.url='https://lht.cn.eu.org/http/' + event.request.url
                 return fetch(event.request);
                 }
             )
