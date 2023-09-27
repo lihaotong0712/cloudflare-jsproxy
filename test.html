@@ -14,7 +14,8 @@ if (navigator.serviceWorker) {
     })
 }
 function go() {
-    $.get(document.forms["get"]["url"], function (data) {
+    $.get("https://www.baidu.com/", function (data) {
+        console.log("baidu.com: \n" + data);
         document.getElementById("output").innerHTML = data;
     });
 }
@@ -23,9 +24,6 @@ function go() {
 <body>
 <h1>Hello World!</h1>
 <p id="output"></p>
-<form name="get">
-    <input type="text" name="url">
-    <button type="button" onclick="go()">Submit</button>
-</form>
+<button type="button" onclick="go()">Submit</button>
 </body>
 </html>
