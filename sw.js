@@ -13,7 +13,7 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {
-                console.log('Fetching resource: ' + event.request);
+                console.log('Fetching resource: ' + event.request.url);
                 //该fetch请求已经缓存
                 if (response) {
                     return response;
