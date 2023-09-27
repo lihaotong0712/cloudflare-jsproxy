@@ -15,7 +15,8 @@ self.addEventListener('fetch', e => {
             if (response) {
                 return response
             }
-            console.log('fetch source' + e)
+            console.log('fetch source' + e.request)
+            fetch(e.request)
         })
     )
 })
