@@ -10,14 +10,6 @@ self.addEventListener('install', e => {
 // 拦截所有请求事件
 // 如果缓存中已经有请求的数据就直接用缓存，否则去请求数据
 self.addEventListener('fetch', e => {
-    e.respondWith(
-        caches.match(e.request).then(function (response) {
-            console.log('fetch source: ' + e.request)
-            if (response) {
-                return response
-            }
-            console.log('fetch source' + e.request)
-            fetch(e.request)
-        })
-    )
+    console.log('fetch source' + e.request);
+    e.respondWith(fetch(e.request));
 })
