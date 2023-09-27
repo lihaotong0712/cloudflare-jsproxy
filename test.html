@@ -14,7 +14,7 @@ if (navigator.serviceWorker) {
     })
 }
 function go() {
-    $.get("https://www.baidu.com/", function (data) {
+    $.get("tmp.txt", function (data) {
         console.log("baidu.com: \n" + data);
         document.getElementById("output").innerHTML = data;
     });
